@@ -21,9 +21,9 @@ function MainContent() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 main-container my-8 p-6">
       {/* LinkedIn-style header */}
-      <header className="mt-6 mb-8 md:mt-10 md:mb-12">
+      <header className="mt-4 mb-8 md:mt-6 md:mb-10">
         <div className="text-center">
           <h1 className="text-2xl md:text-3xl font-bold mb-3 text-[var(--linkedin-blue-primary)]">
             {t.pageTitle}
@@ -90,7 +90,7 @@ function MainContent() {
 // Page component with the LanguageProvider wrapper
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col bg-[var(--linkedin-gray-bg)]">
+    <main className="min-h-screen flex flex-col items-center justify-center py-4">
       <LanguageProvider>
         <MainContent />
       </LanguageProvider>
