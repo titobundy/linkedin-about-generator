@@ -20,12 +20,18 @@ import OpenAI from 'openai';
  * 3. Add OPENAI_API_KEY as the name and your API key as the value
  */
 
-// Initialize OpenAI client
-// The API key is automatically loaded from process.env.OPENAI_API_KEY
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+/**
+ * Note: The OpenAI client is initialized only when needed (at runtime)
+ * No API key is required during build time, only when the API is actually called
+ * This allows successful builds without the OPENAI_API_KEY environment variable set
+ */
 
+// Helper function to get OpenAI client - only called at runtime
+const getOpenAIClient = () => {
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY || '',
+  });
+};
 /**
  * API route handler for generating LinkedIn About sections
  */
@@ -107,6 +113,9 @@ async function generateAboutSection(
     // Format the user prompt based on the selected language and tone
     const userPrompt = formatPrompt(name, role, experience, technologies, tone, language);
 
+    // Initialize OpenAI client at runtime
+    const openai = getOpenAIClient();
+    
     // Call the OpenAI API
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",  // You can adjust the model based on your needs
