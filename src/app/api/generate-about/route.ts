@@ -116,9 +116,12 @@ async function generateAboutSection(
     // Initialize OpenAI client at runtime
     const openai = getOpenAIClient();
     
+    // Get the model from environment variables or use a default
+    const model = process.env.OPENAI_MODEL || "gpt-3.5-turbo";
+    
     // Call the OpenAI API
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o",  // You can adjust the model based on your needs
+      model,  // Using the model from environment variables
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt }
