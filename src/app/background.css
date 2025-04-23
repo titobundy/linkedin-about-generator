@@ -1,0 +1,66 @@
+/* Background image for LinkedIn About Generator */
+html, body {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(243, 242, 239, 0.9)), url("https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* Container styling for better contrast with background */
+.main-container {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+/* Photo credit */
+.photo-credit {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-size: 8px;
+  padding: 2px 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  color: #666;
+  text-decoration: none;
+  z-index: 10;
+}
+
+.photo-credit:hover {
+  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Adjust photo credit size for larger screens */
+@media (min-width: 640px) {
+  .photo-credit {
+    bottom: 10px;
+    right: 10px;
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-image: linear-gradient(to bottom, rgba(29, 34, 38, 0.7), rgba(29, 34, 38, 0.9)), url("https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200") !important;
+  }
+  
+  .main-container {
+    background-color: rgba(29, 34, 38, 0.85);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .photo-credit {
+    color: #aaa;
+    background-color: rgba(29, 34, 38, 0.7);
+  }
+  
+  .photo-credit:hover {
+    background-color: rgba(29, 34, 38, 0.9);
+  }
+}
