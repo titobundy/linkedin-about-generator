@@ -1,26 +1,200 @@
 @import "tailwindcss";
 
+/* LinkedIn Theme CSS Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --linkedin-blue-primary: #0a66c2;
+  --linkedin-blue-light: #0073b1;
+  --linkedin-blue-dark: #004182;
+  --linkedin-blue-hover: #004182;
+  --linkedin-blue-focus: #0077b5;
+  
+  --linkedin-gray-bg: #f3f2ef;
+  --linkedin-gray-border: #e7e7e7;
+  --linkedin-gray-medium: #666666;
+  --linkedin-gray-dark: #292929;
+  --linkedin-gray-light: #e7e7e7;
+  --linkedin-gray-hover: #dedede;
+  
+  --linkedin-error: #d11124;
+  --linkedin-success: #057642;
+  --linkedin-warning: #b24020;
+  
+  /* Background and text colors */
+  --background: var(--linkedin-gray-bg);
+  --foreground: var(--linkedin-gray-dark);
+  
+  /* Border and shadow */
+  --linkedin-border-radius: 4px;
+  --linkedin-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+  --linkedin-shadow-hover: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.1);
+  --linkedin-shadow-button: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
+/* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Basic colors */
+    --linkedin-gray-bg: #1d2226;
+    --linkedin-gray-dark: #ffffff;
+    --linkedin-gray-medium: #b3b3b3;
+    --linkedin-gray-light: #424242;
+    --linkedin-gray-border: #424242;
+    
+    /* Background and text colors */
+    --background: var(--linkedin-gray-bg);
+    --foreground: var(--linkedin-gray-dark);
+    
+    /* Card and form colors for dark mode */
+    --linkedin-card-bg: #2c2c2c;
+    --linkedin-form-bg: #383838;
+    --linkedin-input-bg: #2c2c2c;
+    --linkedin-input-text: #e0e0e0;
+    --linkedin-input-border: #555555;
+    
+    /* Other elements */
+    --linkedin-error-text: #ff6b6b;
   }
 }
 
+/* Base styles */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global element styling */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--linkedin-gray-dark);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--linkedin-blue-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--linkedin-blue-hover);
+}
+
+/* LinkedIn-style button reset */
+button {
+  font-family: inherit;
+}
+
+/* LinkedIn-style form elements */
+input, 
+textarea, 
+select {
+  font-family: inherit;
+  background-color: white;
+  border: 1px solid var(--linkedin-gray-border);
+  border-radius: var(--linkedin-border-radius);
+  padding: 0.75rem;
+  width: 100%;
+}
+
+input:focus, 
+textarea:focus, 
+select:focus {
+  outline: none;
+  border-color: var(--linkedin-blue-primary);
+  box-shadow: 0 0 0 1px var(--linkedin-blue-primary);
+}
+
+/* LinkedIn-styled card */
+.linkedin-card {
+  background-color: white;
+  border-radius: var(--linkedin-border-radius);
+  box-shadow: var(--linkedin-shadow);
+  border: 1px solid var(--linkedin-gray-border);
+  transition: box-shadow 0.3s ease;
+}
+
+.linkedin-card:hover {
+  box-shadow: var(--linkedin-shadow-hover);
+}
+
+/* LinkedIn primary button styling */
+.btn-linkedin-primary {
+  background-color: var(--linkedin-blue-primary);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--linkedin-border-radius);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-linkedin-primary:hover {
+  background-color: var(--linkedin-blue-hover);
+}
+
+/* LinkedIn secondary button styling */
+.btn-linkedin-secondary {
+  background-color: transparent;
+  color: var(--linkedin-gray-dark);
+  font-weight: 600;
+  border-radius: var(--linkedin-border-radius);
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--linkedin-gray-border);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-linkedin-secondary:hover {
+  background-color: var(--linkedin-gray-light);
+  border-color: var(--linkedin-gray-medium);
+}
+
+/* Dark mode overrides for card and form elements */
+@media (prefers-color-scheme: dark) {
+  .linkedin-card {
+    background-color: var(--linkedin-card-bg);
+    border-color: var(--linkedin-input-border);
+  }
+  
+  input, 
+  textarea, 
+  select {
+    background-color: var(--linkedin-input-bg);
+    border-color: var(--linkedin-input-border);
+    color: var(--linkedin-input-text);
+  }
+  
+  input:focus, 
+  textarea:focus, 
+  select:focus {
+    border-color: var(--linkedin-blue-primary);
+    box-shadow: 0 0 0 1px var(--linkedin-blue-primary);
+  }
+  
+  /* Fix for elements with bg-white class in dark mode */
+  [class*="bg-white"] {
+    background-color: var(--linkedin-card-bg) !important;
+    color: var(--linkedin-input-text) !important;
+  }
+  
+  /* Fix for inline text colors in dark mode */
+  .text-\[var\(--linkedin-error\)\] {
+    color: var(--linkedin-error-text) !important;
+  }
+  
+  /* Ensure background-specific elements have proper contrast */
+  .bg-blue-50 {
+    background-color: rgba(10, 102, 194, 0.15) !important;
+  }
 }

@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   creator: "LinkedIn About Generator",
   viewport: "width=device-width, initial-scale=1",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" }
+    { media: "(prefers-color-scheme: light)", color: "#f3f2ef" },
+    { media: "(prefers-color-scheme: dark)", color: "#1d2226" }
   ],
 };
 
@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className="h-full antialiased">
+    <html lang="en" className="h-full font-linkedin">
+      <body className="h-full antialiased bg-[var(--linkedin-gray-bg)] text-[var(--linkedin-gray-dark)]">
         {children}
       </body>
     </html>

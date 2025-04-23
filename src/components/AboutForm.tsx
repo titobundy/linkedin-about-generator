@@ -65,12 +65,12 @@ const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, onSubmit, isLoading }
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6 max-w-2xl mx-auto">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="linkedin-card p-6 rounded-[var(--linkedin-border-radius)] space-y-5 max-w-2xl mx-auto">
       {/* Language Selector */}
-      <div className="flex justify-end mb-4">
-        <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text text-sm font-medium">{t.languageLabel}</span>
+      <div className="flex justify-end mb-2">
+        <div className="w-full max-w-xs">
+          <label className="block text-[var(--linkedin-gray-dark)] text-sm font-semibold mb-1">
+            {t.languageLabel}
           </label>
           <Controller
             name="language"
@@ -78,7 +78,7 @@ const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, onSubmit, isLoading }
             render={({ field }) => (
               <select
                 {...field}
-                className="select select-bordered w-full max-w-xs"
+                className="border border-[var(--linkedin-gray-border)] rounded-[var(--linkedin-border-radius)] py-2 px-3 w-full focus:border-[var(--linkedin-blue-primary)] focus:ring-1 focus:ring-[var(--linkedin-blue-primary)] focus:outline-none"
                 disabled={isLoading}
               >
                 {languageOptions.map((option) => (
@@ -92,108 +92,113 @@ const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, onSubmit, isLoading }
         </div>
       </div>
 
-      {/* Name */}
-      <div className="form-control w-full">
-        <label className="label">
-          <span className="label-text text-sm font-medium">{t.nameLabel}</span>
-        </label>
-        <input
-          type="text"
-          {...register('name')}
-          placeholder={t.namePlaceholder}
-          className={`input input-bordered w-full ${errors.name ? 'input-error' : ''}`}
-          disabled={isLoading}
-        />
-        {errors.name && (
-          <span className="text-red-500 text-xs mt-1">{errors.name.message}</span>
-        )}
-      </div>
-
-      {/* Professional Role */}
-      <div className="form-control w-full">
-        <label className="label">
-          <span className="label-text text-sm font-medium">{t.roleLabel}</span>
-        </label>
-        <input
-          type="text"
-          {...register('role')}
-          placeholder={t.rolePlaceholder}
-          className={`input input-bordered w-full ${errors.role ? 'input-error' : ''}`}
-          disabled={isLoading}
-        />
-        {errors.role && (
-          <span className="text-red-500 text-xs mt-1">{errors.role.message}</span>
-        )}
-      </div>
-
-      {/* Experience Details */}
-      <div className="form-control w-full">
-        <label className="label">
-          <span className="label-text text-sm font-medium">{t.experienceLabel}</span>
-        </label>
-        <textarea
-          {...register('experience')}
-          placeholder={t.experiencePlaceholder}
-          className={`textarea textarea-bordered h-24 w-full ${errors.experience ? 'textarea-error' : ''}`}
-          disabled={isLoading}
-        />
-        {errors.experience && (
-          <span className="text-red-500 text-xs mt-1">{errors.experience.message}</span>
-        )}
-      </div>
-
-      {/* Technologies & Skills */}
-      <div className="form-control w-full">
-        <label className="label">
-          <span className="label-text text-sm font-medium">{t.technologiesLabel}</span>
-        </label>
-        <textarea
-          {...register('technologies')}
-          placeholder={t.technologiesPlaceholder}
-          className={`textarea textarea-bordered h-20 w-full ${errors.technologies ? 'textarea-error' : ''}`}
-          disabled={isLoading}
-        />
-        {errors.technologies && (
-          <span className="text-red-500 text-xs mt-1">{errors.technologies.message}</span>
-        )}
-      </div>
-
-      {/* Tone Selection */}
-      <div className="form-control w-full">
-        <label className="label">
-          <span className="label-text text-sm font-medium">{t.toneLabel}</span>
-        </label>
-        <Controller
-          name="tone"
-          control={control}
-          render={({ field }) => (
-            <select
-              {...field}
-              className="select select-bordered w-full"
-              disabled={isLoading}
-            >
-              {toneOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label[language]}
-                </option>
-              ))}
-            </select>
+      <div className="border-t border-[var(--linkedin-gray-border)] pt-5">
+        {/* Name */}
+        <div className="mb-4">
+          <label className="block text-[var(--linkedin-gray-dark)] text-sm font-semibold mb-1">
+            {t.nameLabel}
+          </label>
+          <input
+            type="text"
+            {...register('name')}
+            placeholder={t.namePlaceholder}
+            className={`border ${errors.name ? 'border-[var(--linkedin-error)]' : 'border-[var(--linkedin-gray-border)]'} rounded-[var(--linkedin-border-radius)] py-2 px-3 w-full focus:border-[var(--linkedin-blue-primary)] focus:ring-1 focus:ring-[var(--linkedin-blue-primary)] focus:outline-none`}
+            disabled={isLoading}
+          />
+          {errors.name && (
+            <span className="text-[var(--linkedin-error)] text-xs mt-1 block">{errors.name.message}</span>
           )}
-        />
+        </div>
+
+        {/* Professional Role */}
+        <div className="mb-4">
+          <label className="block text-[var(--linkedin-gray-dark)] text-sm font-semibold mb-1">
+            {t.roleLabel}
+          </label>
+          <input
+            type="text"
+            {...register('role')}
+            placeholder={t.rolePlaceholder}
+            className={`border ${errors.role ? 'border-[var(--linkedin-error)]' : 'border-[var(--linkedin-gray-border)]'} rounded-[var(--linkedin-border-radius)] py-2 px-3 w-full focus:border-[var(--linkedin-blue-primary)] focus:ring-1 focus:ring-[var(--linkedin-blue-primary)] focus:outline-none`}
+            disabled={isLoading}
+          />
+          {errors.role && (
+            <span className="text-[var(--linkedin-error)] text-xs mt-1 block">{errors.role.message}</span>
+          )}
+        </div>
+
+        {/* Experience Details */}
+        <div className="mb-4">
+          <label className="block text-[var(--linkedin-gray-dark)] text-sm font-semibold mb-1">
+            {t.experienceLabel}
+          </label>
+          <textarea
+            {...register('experience')}
+            placeholder={t.experiencePlaceholder}
+            className={`border ${errors.experience ? 'border-[var(--linkedin-error)]' : 'border-[var(--linkedin-gray-border)]'} rounded-[var(--linkedin-border-radius)] py-2 px-3 w-full h-24 focus:border-[var(--linkedin-blue-primary)] focus:ring-1 focus:ring-[var(--linkedin-blue-primary)] focus:outline-none resize-none`}
+            disabled={isLoading}
+          />
+          {errors.experience && (
+            <span className="text-[var(--linkedin-error)] text-xs mt-1 block">{errors.experience.message}</span>
+          )}
+        </div>
+
+        {/* Technologies & Skills */}
+        <div className="mb-4">
+          <label className="block text-[var(--linkedin-gray-dark)] text-sm font-semibold mb-1">
+            {t.technologiesLabel}
+          </label>
+          <textarea
+            {...register('technologies')}
+            placeholder={t.technologiesPlaceholder}
+            className={`border ${errors.technologies ? 'border-[var(--linkedin-error)]' : 'border-[var(--linkedin-gray-border)]'} rounded-[var(--linkedin-border-radius)] py-2 px-3 w-full h-20 focus:border-[var(--linkedin-blue-primary)] focus:ring-1 focus:ring-[var(--linkedin-blue-primary)] focus:outline-none resize-none`}
+            disabled={isLoading}
+          />
+          {errors.technologies && (
+            <span className="text-[var(--linkedin-error)] text-xs mt-1 block">{errors.technologies.message}</span>
+          )}
+        </div>
+
+        {/* Tone Selection */}
+        <div className="mb-4">
+          <label className="block text-[var(--linkedin-gray-dark)] text-sm font-semibold mb-1">
+            {t.toneLabel}
+          </label>
+          <Controller
+            name="tone"
+            control={control}
+            render={({ field }) => (
+              <select
+                {...field}
+                className="border border-[var(--linkedin-gray-border)] rounded-[var(--linkedin-border-radius)] py-2 px-3 w-full focus:border-[var(--linkedin-blue-primary)] focus:ring-1 focus:ring-[var(--linkedin-blue-primary)] focus:outline-none"
+                disabled={isLoading}
+              >
+                {toneOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label[language]}
+                  </option>
+                ))}
+              </select>
+            )}
+          />
+        </div>
       </div>
 
       {/* Submit Button */}
-      <div className="form-control mt-8">
+      <div className="mt-8">
         <button
           type="submit"
-          className="btn btn-primary w-full"
+          className="w-full bg-[var(--linkedin-blue-primary)] text-white font-semibold py-3 px-4 rounded-[var(--linkedin-border-radius)] hover:bg-[var(--linkedin-blue-hover)] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--linkedin-blue-focus)] focus:ring-opacity-50 disabled:opacity-70 disabled:cursor-not-allowed"
           disabled={isLoading}
         >
           {isLoading ? (
-            <>
-              <span className="loading loading-spinner loading-sm mr-2"></span>
+            <div className="flex items-center justify-center">
+              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
               {t.generatingMessage}
-            </>
+            </div>
           ) : (
             t.generateButton
           )}
@@ -204,4 +209,3 @@ const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, onSubmit, isLoading }
 };
 
 export default AboutForm;
-

@@ -25,7 +25,7 @@ export const formSchema = z.object({
     .trim(),
   
   // Tone of voice (one of predefined options)
-  tone: z.enum(['professional', 'formal', 'inspirational', 'friendly', 'conversational']),
+  tone: z.enum(['professional', 'formal', 'inspirational', 'friendly', 'conversational', 'creative']),
   
   // Language selection (English or Spanish)
   language: z.enum(['en', 'es']),
@@ -40,7 +40,8 @@ export const toneOptions = [
   { value: 'formal', label: { en: 'Formal', es: 'Formal' } },
   { value: 'inspirational', label: { en: 'Inspirational', es: 'Inspirador' } },
   { value: 'friendly', label: { en: 'Friendly', es: 'Amigable' } },
-  { value: 'conversational', label: { en: 'Conversational', es: 'Conversacional' } }
+  { value: 'conversational', label: { en: 'Conversational', es: 'Conversacional' } },
+  { value: 'creative', label: { en: 'Creative', es: 'Creativo' } }
 ];
 
 // Language options
