@@ -7,10 +7,11 @@ import { useLanguage } from '../lib/contexts/LanguageContext';
 
 interface AboutFormProps {
   onGenerate: (text: string) => void;
+  onSubmit: () => void;
   isLoading: boolean;
 }
 
-const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, isLoading }) => {
+const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, onSubmit, isLoading }) => {
   const { t, language, setLanguage } = useLanguage();
   
   const { 
@@ -22,6 +23,7 @@ const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, isLoading }) => {
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: '',
       role: '',
       experience: '',
       technologies: '',
@@ -37,7 +39,10 @@ const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, isLoading }) => {
     setLanguage(watchedLanguage as 'en' | 'es');
   }, [watchedLanguage, setLanguage]);
 
-  const onSubmit = async (data: FormValues) => {
+  const handleFormSubmit = async (data: FormValues) => {
+    // Signal to parent component that submission has started
+    onSubmit();
+    
     try {
       const response = await fetch('/api/generate-about', {
         method: 'POST',
@@ -60,7 +65,7 @@ const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, isLoading }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-2xl mx-auto">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6 max-w-2xl mx-auto">
       {/* Language Selector */}
       <div className="flex justify-end mb-4">
         <div className="form-control w-full max-w-xs">
@@ -85,6 +90,23 @@ const AboutForm: React.FC<AboutFormProps> = ({ onGenerate, isLoading }) => {
             )}
           />
         </div>
+      </div>
+
+      {/* Name */}
+      <div className="form-control w-full">
+        <label className="label">
+          <span className="label-text text-sm font-medium">{t.nameLabel}</span>
+        </label>
+        <input
+          type="text"
+          {...register('name')}
+          placeholder={t.namePlaceholder}
+          className={`input input-bordered w-full ${errors.name ? 'input-error' : ''}`}
+          disabled={isLoading}
+        />
+        {errors.name && (
+          <span className="text-red-500 text-xs mt-1">{errors.name.message}</span>
+        )}
       </div>
 
       {/* Professional Role */}

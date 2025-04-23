@@ -10,6 +10,8 @@ interface Translations {
   pageDescription: string;
   
   // Form labels
+  nameLabel: string;
+  namePlaceholder: string;
   roleLabel: string;
   rolePlaceholder: string;
   experienceLabel: string;
@@ -39,6 +41,8 @@ const translations: Record<Language, Translations> = {
     pageDescription: 'Create a personalized LinkedIn About section with AI',
     
     // Form labels
+    nameLabel: 'Your Name',
+    namePlaceholder: 'Enter your full name',
     roleLabel: 'Professional Role',
     rolePlaceholder: 'E.g., Full Stack Developer, Marketing Manager, Project Manager',
     experienceLabel: 'Experience Details',
@@ -65,6 +69,8 @@ const translations: Record<Language, Translations> = {
     pageDescription: 'Crea una sección Acerca de personalizada para LinkedIn con IA',
     
     // Form labels
+    nameLabel: 'Tu Nombre',
+    namePlaceholder: 'Ingresa tu nombre completo',
     roleLabel: 'Rol Profesional',
     rolePlaceholder: 'Ej., Desarrollador Full Stack, Gerente de Marketing, Director de Proyectos',
     experienceLabel: 'Detalles de Experiencia',

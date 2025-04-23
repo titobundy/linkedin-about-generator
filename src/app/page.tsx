@@ -13,8 +13,13 @@ function MainContent() {
 
   const handleGenerate = (text: string) => {
     setGeneratedText(text);
-    setIsLoading(false);
+    setIsLoading(false); // Turn off loading when generation is complete
   };
+
+  const handleSubmit = () => {
+    setIsLoading(true); // Turn on loading when form is submitted
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto px-4">
       <header className="mt-8 mb-12 text-center">
@@ -28,7 +33,8 @@ function MainContent() {
 
       <div className="mb-16">
         <AboutForm 
-          onGenerate={handleGenerate} 
+          onGenerate={handleGenerate}
+          onSubmit={handleSubmit}
           isLoading={isLoading} 
         />
         

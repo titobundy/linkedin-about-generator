@@ -4,6 +4,11 @@ import { z } from 'zod';
  * Validation schema for the LinkedIn About generator form
  */
 export const formSchema = z.object({
+  // Name of the person (required, min 2 characters)
+  name: z.string()
+    .min(2, { message: 'Name must be at least 2 characters long' })
+    .trim(),
+
   // Professional role/title (required, min 2 characters)
   role: z.string()
     .min(2, { message: 'Role must be at least 2 characters long' })
