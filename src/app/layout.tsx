@@ -24,14 +24,6 @@ export default function RootLayout({
     <html lang="en" className="h-full font-linkedin">
       <body className="h-full antialiased bg-[var(--linkedin-gray-bg)] text-[var(--linkedin-gray-dark)]">
         {children}
-        <a 
-          href="https://unsplash.com/photos/5fNmWej4tAA" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="photo-credit"
-        >
-          Photo by Alejandro Escamilla on Unsplash
-        </a>
       </body>
     </html>
   );

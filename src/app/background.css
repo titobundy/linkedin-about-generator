@@ -18,9 +18,12 @@ html, body {
 /* Photo credit */
 .photo-credit {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
-  font-size: 10px;
+  bottom: 5px;
+  right: 5px;
+  font-size: 8px;
+  padding: 2px 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
   color: #666;
   text-decoration: none;
   z-index: 10;
@@ -28,6 +31,17 @@ html, body {
 
 .photo-credit:hover {
   text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Adjust photo credit size for larger screens */
+@media (min-width: 640px) {
+  .photo-credit {
+    bottom: 10px;
+    right: 10px;
+    font-size: 10px;
+    padding: 3px 8px;
+  }
 }
 
 /* Dark mode adjustments */
@@ -43,5 +57,10 @@ html, body {
   
   .photo-credit {
     color: #aaa;
+    background-color: rgba(29, 34, 38, 0.7);
+  }
+  
+  .photo-credit:hover {
+    background-color: rgba(29, 34, 38, 0.9);
   }
 }
